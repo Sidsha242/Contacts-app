@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"; //useeffect is use for keepi
 import {
   BrowserRouter as Router,
   Routes,
-  Route,
+  Route
 } from "react-router-dom";
 import { v4 as uuid } from "uuid";  //to get id
 import "./App.css";
@@ -38,12 +38,20 @@ function App() {
       <Router>
         <Header />
         <Routes>
-          <Route path="/" exact elements={ContactList} />
-          <Route path="/add" elements={<AddContact />} />
+        <Route 
+        path="/" 
+        exact element={
+        <ContactList contacts={contacts} getContactId={removeContactHandler} />
+        } 
+        />
+        <Route 
+        path="/add" 
+        element={
+        <AddContact addContactHandler={addContactHandler} />
+        }
+        />
         </Routes>
-
-
-        {/* <AddContact addContactHandler={addContactHandler} /> */}
+        {/* <AddContact addContactHandler={addContactHandler} />  */}
         {/* <ContactList contacts={contacts} getContactId={removeContactHandler} /> */}
       </Router>
     </div>
